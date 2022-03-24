@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+{% form_theme formNewsletter 'bootstrap_5_layout.html.twig' %}
+
+
+{% block title %}Esybel A propos{% endblock %}
+
+{% block body %}
+{% block header %}{{parent()}}{% endblock %}
+{% block main %}
+<main>
+ <!-- ***** Chefs Area Starts ***** -->
+{% for nous in nouss %}
+<div class="container ">
+<video controls autoplay loop  width="100%"   >
+
+    <source src="image/bakeryvideo.mp4"
+            type="video/mp4">
+
+    Sorry, your browser doesn't support embedded videos.
+</video>
+ 
+
+
+   <!-- ***** nous    Area starts ***** -->   
+      <section class="section mt-5 mt-3 d-none d-lg-block" id="about">
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg- align-self-center">
+                    <div class="left-text-content">
+                        <div class="section-heading">
+                            <h6 style=" font-family: 'Hurricane', cursive;   color:black">nous somme les boulanger</h6>
+                       
+                         <h4 style=" font-family: 'Hurricane', cursive;   width:900px;  line-height: 2.5;" class="text-center mx-auto" >{{nous.description[:268]}}</h4>
+                         <br>
+                          <img src="image/nousi1.webp" alt="nous1" height="500px" width="100%">
+                          <div>
+                          <h4 style=" font-family: 'Hurricane', cursive; width:900px;  line-height: 1.5;" class="text-center mt-3 mx-auto">{{nous.titre}}</h4>
+                          <h4 style="font-family: 'Hurricane', cursive; width:900px;  line-height: 1.5;" class="text-center mt-3 mx-auto" >{{nous.description[269:972]}}</h4>
+                          </div>
+                          
+                          <img src="image/nousi3.webp" alt="nous3" height="500px" width="100%">
+                          <br>
+                           <h4 style="font-family: 'Hurricane', cursive;  width:900px;  line-height: 2.5;" class="text-center mt-3 mx-auto" >{{nous.description[1241:1600]}}</h4>
+                        </div>
+                    </div>
+                </div>
+               
+                 <div class="row mt-5">
+                <div class="col-lg-4 ">
+                    <div class="chef-item">
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                          
+                            <img src="{{vich_uploader_asset(nous, 'imageFile1')}}" alt="nous1" height="400px" width="400px">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 ">
+                    <div class="chef-item">
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                           
+                            <img src="{{vich_uploader_asset(nous, 'imageFile2')}}" alt="nous2" height="400px" width="400px">
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-4 ">
+                    <div class="chef-item">
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                         
+                            <img src="{{vich_uploader_asset(nous, 'imageFile3')}}" alt="nous3" height="400px" width="400px">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** nous Area Ends ***** -->
+
+     <!-- ***** nous mobile version  Area starts ***** --> 
+            <section class="d-lg-none" class="section " id="about">
+                  <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="section-heading">
+                                    <h6>nous somme les boulanger</h6>
+                                   <h4 style=" font-family: 'Hurricane', cursive;  color:#FA5A4A; line-height: 1.0;" class="text-center mx-auto" >{{nous.description[:268]}}</h4>
+                         <br>
+                          <img src="image/nousi1.webp" alt="nous1" height="500px" width="100%">
+                           <div>
+                          <h4 style=" font-family: 'Hurricane', cursive; color:#FA5A4A; line-height: 1.5;" class="text-center mt-3 mx-auto">{{nous.titre}}</h4>
+                          <h4 style=" font-family: 'Hurricane', cursive; color:#FA5A4A; line-height: 1.5;" class="text-center mt-3 mx-auto " >{{nous.description[269:972]}}</h4>
+                            <img src="image/nousi3.webp" alt="nous3" height="500px" width="100%">
+                          <br>
+                           <h4 style="font-family: 'Hurricane', cursive;  color:#FA5A4A; line-height: 1.0;" class="text-center mt-3 mx-auto" >{{nous.description[1241:1600]}}</h4>
+                          </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                       
+                <div id="carouselExampleFade" class="carousel slide carousel-fade  " data-ride="carousel" data-interval="2000">
+                        <div class="row">
+                    <div class="carousel-inner "> 
+               
+                            <div class="carousel-item active col-12">
+                        <img  src="{{vich_uploader_asset(nous, 'imageFile1')}}" alt="First slide" height="400px" width="400px" >
+                    </div>
+                    <div class="carousel-item col-12">
+                        <img  src="{{vich_uploader_asset(nous, 'imageFile2')}}" alt="Second slide" height="400px" width="400px">
+                    </div>
+                    <div class="carousel-item col-12">
+                        <img  src="{{vich_uploader_asset(nous, 'imageFile3')}}" alt="Third slide" height="400px" width="400px" >
+                    </div>
+                  
+               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>   
+           </div>            
+                </div>
+                 </div>
+              </section>
+         <!-- ***** snacking mobile version  Area ends ***** -->
+{% endfor %}
+ 
+</main>
+{% endblock %}
+
+{% block footer %}{{parent()}}{% endblock %}
+{% endblock %}

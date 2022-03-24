@@ -1,0 +1,44 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        banner:
+            uri_prefix: /images/banner
+            upload_destination: '%kernel.project_dir%/public/images/banner'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        nous:
+            uri_prefix: /images/nous
+            upload_destination: '%kernel.project_dir%/public/images/nous'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        splmaison:
+            uri_prefix: /images/splmaison
+            upload_destination: '%kernel.project_dir%/public/images/splmaison'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        splmoment:
+            uri_prefix: /images/splmoment
+            upload_destination: '%kernel.project_dir%/public/images/splmoment'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+
+        snacking:
+            uri_prefix: /images/snacking
+            upload_destination: '%kernel.project_dir%/public/images/snacking'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
