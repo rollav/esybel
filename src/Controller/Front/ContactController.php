@@ -25,7 +25,17 @@ class ContactController extends AbstractController
       $formNewsletter = $this->createForm(NewsletterType::class, $newsletter);
         $formNewsletter->handleRequest($request);
         if ($formNewsletter->isSubmitted() && $formNewsletter->isValid()){
-          $newsletter = $formNewsletter->getData();
+          $newsletter = $formNewsletter->getData($formNewsletter);
+          $message = (new Email())
+          ->from($newsletter->getEmail())
+          ->to('vijayrolla21@gmail.com')
+          ->subject($newsletter->getnom() , 'est inscrier a newsletter')
+          ->text(' nom : '.$newsletter->getnom().\PHP_EOL. 
+          ' prenom : '.$newsletter->getprenom().\PHP_EOL. 
+          'message : '.$newsletter->getemail().
+          '  inscrier au newsletter')
+          ;
+          $mailer->send($message);
           $entityManagerInterface->persist($newsletter);
           $entityManagerInterface->flush();
           $this->addFlash('success', 'vous est bien inscrite pour newsletter');
@@ -47,8 +57,7 @@ class ContactController extends AbstractController
             ->subject("il y a un nouveau nouveau message " )
             ->text('contacte nom : '.$contact->getnom().\PHP_EOL. 
             'contacte par prenom : '.$contact->getprenom().\PHP_EOL. 
-            'message : '.$contact->getmessage().
-            'text/plain')
+            'message : '.$contact->getmessage())
             ;
         $mailer->send($email);
             $entityManagerInterface->persist(($contact));

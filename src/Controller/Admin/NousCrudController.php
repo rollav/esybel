@@ -32,6 +32,8 @@ class NousCrudController extends AbstractCrudController
             TextField::new('imageFile3')->setFormType(VichImageType::class)->onlyOnForms(),
             ImageField::new('image3')->setBasePath('images/nous')->onlyOnIndex(),
             TextField::new('video'),
+            TextField::new('quote1'),
+            TextField::new('quote2'),
         ];
     }
     

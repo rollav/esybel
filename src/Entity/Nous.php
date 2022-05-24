@@ -70,6 +70,12 @@ class Nous
      */
     private $updatedAt;
 
+    #[ORM\Column(type: 'text')]
+    private $quote1;
+
+    #[ORM\Column(type: 'text')]
+    private $quote2;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -218,6 +224,30 @@ class Nous
     public function getImageFile3(): ?File
     {
         return $this->imageFile3;
+    }
+
+    public function getQuote1(): ?string
+    {
+        return $this->quote1;
+    }
+
+    public function setQuote1(string $quote1): self
+    {
+        $this->quote1 = $quote1;
+
+        return $this;
+    }
+
+    public function getQuote2(): ?string
+    {
+        return $this->quote2;
+    }
+
+    public function setQuote2(string $quote2): self
+    {
+        $this->quote2 = $quote2;
+
+        return $this;
     }
 
 }

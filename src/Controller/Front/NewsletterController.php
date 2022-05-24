@@ -22,16 +22,16 @@ class NewsletterController extends AbstractController
         $formNewsletter->handleRequest($request);
         if ($formNewsletter->isSubmitted() && $formNewsletter->isValid()){
             $newsletter = $formNewsletter->getData($formNewsletter);
-        //   $email = (new Email())
-        //   ->from($newsletter->getEmail())
-        //   ->to('vijayrolla21@gmail.com')
-        //   ->subject($newsletter->getnom() , 'est inscrier a newsletter')
-        //   ->text(' nom : '.$newsletter->getnom().\PHP_EOL. 
-        //   ' prenom : '.$newsletter->getprenom().\PHP_EOL. 
-        //   'message : '.$newsletter->getemail().
-        //   'text/plain')
-        //   ;
-        //   $mailer->send($email);
+          $message = (new Email())
+          ->from($newsletter->getEmail())
+          ->to('vijayrolla21@gmail.com')
+          ->subject($newsletter->getnom() , 'est inscrier a newsletter')
+          ->text(' nom : '.$newsletter->getnom().\PHP_EOL. 
+          ' prenom : '.$newsletter->getprenom().\PHP_EOL. 
+          'message : '.$newsletter->getemail().
+          'text/plain')
+          ;
+          $mailer->send($message);
 
             
             $entityManagerInterface->persist($newsletter);

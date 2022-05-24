@@ -17,9 +17,10 @@ class NewsletterType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email' , EmailType::class)
-            ->add('inscrier' , SubmitType::class)
+            ->add('inscrivez-vous' , SubmitType::class)
         ;
     }
+    
 
     public function configureOptions(OptionsResolver $resolver): void
     {

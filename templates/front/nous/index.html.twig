@@ -2,66 +2,67 @@
 {% form_theme formNewsletter 'bootstrap_5_layout.html.twig' %}
 
 
-{% block title %}Esybel A propos{% endblock %}
+{% block title %}esybel A propos{% endblock %}
 
 {% block body %}
 {% block header %}{{parent()}}{% endblock %}
 {% block main %}
 <main>
- <!-- ***** Chefs Area Starts ***** -->
+    
+ <!-- ***** nous    Area starts ***** -->  
 {% for nous in nouss %}
-<div class="container ">
-<video controls autoplay loop  width="100%"   >
+
+<video  controls autoplay loop  width="100%"  >
 
     <source src="image/bakeryvideo.mp4"
             type="video/mp4">
 
     Sorry, your browser doesn't support embedded videos.
 </video>
- 
 
-
-   <!-- ***** nous    Area starts ***** -->   
-      <section class="section mt-5 mt-3 d-none d-lg-block" id="about">
+   
+      <section class="section mt-5 mt-3 d-none d-lg-block" id="reservation">
     
         <div class="container">
             <div class="row">
                 <div class="col-lg- align-self-center">
                     <div class="left-text-content">
                         <div class="section-heading">
-                            <h6 style=" font-family: 'Hurricane', cursive;   color:black">nous somme les boulanger</h6>
-                       
-                         <h4 style=" font-family: 'Hurricane', cursive;   width:900px;  line-height: 2.5;" class="text-center mx-auto" >{{nous.description[:268]}}</h4>
+                            <h6 >nous somme les boulanger</h6>
+{#                        
+                         <h4 style="  line-height: 2.0;" class="text-center mx-auto" >{{nous.quote1}}</h4>
                          <br>
                           <img src="image/nousi1.webp" alt="nous1" height="500px" width="100%">
                           <div>
-                          <h4 style=" font-family: 'Hurricane', cursive; width:900px;  line-height: 1.5;" class="text-center mt-3 mx-auto">{{nous.titre}}</h4>
-                          <h4 style="font-family: 'Hurricane', cursive; width:900px;  line-height: 1.5;" class="text-center mt-3 mx-auto" >{{nous.description[269:972]}}</h4>
+                          <h4 class="text-center mt-3 mx-auto">{{nous.titre}}</h4>
+                          <h5 style="   line-height: 2;" class="text-center mt-3 mx-auto" >{{nous.description}}</h5>
                           </div>
                           
                           <img src="image/nousi3.webp" alt="nous3" height="500px" width="100%">
                           <br>
-                           <h4 style="font-family: 'Hurricane', cursive;  width:900px;  line-height: 2.5;" class="text-center mt-3 mx-auto" >{{nous.description[1241:1600]}}</h4>
+                           <h4 style=" line-height: 2;" class="text-center mt-3 mx-auto" >{{nous.quote2}}</h4>
                         </div>
                     </div>
-                </div>
-               
-                 <div class="row mt-5">
-                <div class="col-lg-4 ">
+                </div> #}
+               <div class="row mb-5 ">
+                <img class="col-6" src="image/nousi1.webp" alt="nous1"  width="100%">
+                 <h4 style="  line-height: 2.0;" class=" col-6 text-justify mx-auto" >"{{nous.quote1}}"</h4>
+               </div>
+                  <div class="col-12" >
+                          <h4 class="text-center  mx-auto">{{nous.titre}}</h4>
+                          <h5 style="   line-height: 2;" class="text-justify mt-3 mx-auto" >{{nous.description}}</h5>
+                                 {# <div class="row mt-5">
+                {# <div class="col-lg-4 ">
                     <div class="chef-item">
-                        <div class="thumb">
-                            <div class="overlay"></div>
-                          
+                        <div class="thumb overlay ">
                             <img src="{{vich_uploader_asset(nous, 'imageFile1')}}" alt="nous1" height="400px" width="400px">
-                        </div>
-                        
+                        </div>   
                     </div>
                 </div>
                 <div class="col-lg-4 ">
                     <div class="chef-item">
-                        <div class="thumb">
-                            <div class="overlay"></div>
-                           
+                        <div class="thumb overlay ">
+                        
                             <img src="{{vich_uploader_asset(nous, 'imageFile2')}}" alt="nous2" height="400px" width="400px">
                         </div>
                        
@@ -69,8 +70,8 @@
                 </div>
                 <div class="col-lg-4 ">
                     <div class="chef-item">
-                        <div class="thumb">
-                            <div class="overlay"></div>
+                        <div class="thumb overlay ">
+                          
                          
                             <img src="{{vich_uploader_asset(nous, 'imageFile3')}}" alt="nous3" height="400px" width="400px">
                         </div>
@@ -81,6 +82,19 @@
         </div>
             </div>
         </div>
+                          </div> #} 
+                          <div class="row mt-5">
+                          <div class="col-4 "> <img src="{{vich_uploader_asset(nous, 'imageFile1')}}" alt="nous1"  height="300px" width="350px"></div>
+                            <div class="col-4"> <img src="{{vich_uploader_asset(nous, 'imageFile2')}}" alt="nous2" height="300px" width="350px"></div>
+                              <div class="col-4"> <img src="{{vich_uploader_asset(nous, 'imageFile3')}}" alt="nous3" height="300px" width="350px"></div>
+                          </div>
+                     
+                   <div class="row mt-5">
+            
+                 <h4 style="  line-height: 2.0;" class=" col-6 text-justify mx-auto" >"{{nous.quote2}}"</h4>
+                     <img class="col-6" src="image/nousi3.webp" alt="nous1" width="100%">
+               </div>
+               
     </section>
     <!-- ***** nous Area Ends ***** -->
 
@@ -91,15 +105,15 @@
                             <div class="col-lg-4">
                                 <div class="section-heading">
                                     <h6>nous somme les boulanger</h6>
-                                   <h4 style=" font-family: 'Hurricane', cursive;  color:#FA5A4A; line-height: 1.0;" class="text-center mx-auto" >{{nous.description[:268]}}</h4>
+                                   <h4 style=" line-height: 1.5;" class="text-center mx-auto" > {{nous.quote1}}</h4>
                          <br>
                           <img src="image/nousi1.webp" alt="nous1" height="500px" width="100%">
                            <div>
-                          <h4 style=" font-family: 'Hurricane', cursive; color:#FA5A4A; line-height: 1.5;" class="text-center mt-3 mx-auto">{{nous.titre}}</h4>
-                          <h4 style=" font-family: 'Hurricane', cursive; color:#FA5A4A; line-height: 1.5;" class="text-center mt-3 mx-auto " >{{nous.description[269:972]}}</h4>
+                          <h4  class="text-center mt-3 mx-auto"><strong>{{nous.titre}}</strong></h4>
+                          <h5 style=" line-height: 1.5;" class="text-center mt-3 mx-auto " >{{nous.description}}</h5>
                             <img src="image/nousi3.webp" alt="nous3" height="500px" width="100%">
                           <br>
-                           <h4 style="font-family: 'Hurricane', cursive;  color:#FA5A4A; line-height: 1.0;" class="text-center mt-3 mx-auto" >{{nous.description[1241:1600]}}</h4>
+                           <h4 style=" line-height: 1.5;" class="text-center mt-3 mx-auto" >{{nous.quote2}}</h4>
                           </div>
                                 </div>
                             </div>
@@ -133,7 +147,7 @@
                 </div>
                  </div>
               </section>
-         <!-- ***** snacking mobile version  Area ends ***** -->
+         <!-- ***** nous mobile version  Area ends ***** -->
 {% endfor %}
  
 </main>

@@ -1,28 +1,20 @@
 {% extends 'base.html.twig' %}
 {% form_theme formNewsletter 'bootstrap_5_layout.html.twig' %}
 
-{% block title %}Esybel{% endblock %}
+{% block title %}esybel{% endblock %}
 
 {% block body %}
 {% block header %}{{parent()}}{% endblock %}
 {% block main %}
 
-<main>
-  <!-- ***** inscription flash message start ***** -->
-     {% for message in app.flashes('success') %}
-            <div class="alert alert-success">
-               <em> {{ message }}</em>
-            </div>
-        {% endfor %}
-         <!-- *****inscription flash message end ***** -->
-
+<main>  
 {% for banner in banners %}
     <!-- ***** Main Banner Area Start ***** -->
-    <div id="top" >
-        <div class="container-fluid">
+    <div class="container-fluid ">
+    <div id="top"   >
             <div class="row">
                 <div class="col-lg-4" >
-                    <div class="left-content" style="background-image: url('image/top-left-bg.jpg');"  >
+                    <div id="top" class="left-content" style="background-image: url('image/top-left-bg.jpg');"  >
                         <div class="inner-content" >
                             <h4>{{banner.titre}}</h4>
                             <h6>{{banner.quote}}</h6>
@@ -74,7 +66,7 @@
                         </div>
                         <p>{{nous.description[:402]}} <a href="{{path('nous')}}">savoir plus</a></p>
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-4 ">
                                 <img src="{{vich_uploader_asset(nous, 'imageFile1')}}" alt="" height="200px">
                             </div>
                             <div class="col-4">
@@ -101,7 +93,7 @@
     <!-- ***** About Area Ends ***** -->   
 
                  <!-- ***** splecialities Moment Area starts ***** -->  
-<section class="section p-5 d-none d-lg-block" id="menu">
+ <section class="section p-5 d-none d-lg-block" id="menu">
         <div class="container" >
             <div class="row">
                 <div class="col-lg-4">
@@ -112,60 +104,102 @@
                 </div>
             </div>
         </div>
-               <div class=" col-12 container">
-               <div class="row" >
-                {% for splMoment in splMoments|slice(0,6) %}
-                      <div  class="col-lg-2 "  >    
-                        <div class="card "  style="background-image: url('{{vich_uploader_asset( splMoment, 'imageFile')}}');background-position:center center;background-size:230px 400px; " >
+                   <div class="col-12 container">
+               <div id="multi-item-example2" class="carousel slide carousel-multi-item" data-ride="carousel"  data-pause="hover" >
+     
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox" >
+
+        <!--First slide-->
+        <div class="carousel-item active">
+
+          <div class="row">
+          {% for splMoment in splMoments|slice(0,6) %}
+             <div  class="col-lg-2 "  >    
+                        <div class="card"  style="background-image: url('{{vich_uploader_asset( splMoment , 'imageFile')}}');background-position:center center;background-size:100% 100% ;" >
                             <div class='info ' >
-                              <h1 class='title'>{{splMoment.titre}}</h1>
-                              <p class='description'>{{splMoment.description}}</p> 
+                              <h1 class='title'>{{splMoment .titre}}</h1>
+                              <p class='description'>{{splMoment .description}}</p> 
                             </div>
                         </div> 
                         </div>
-                         {% endfor %}
-                        
+            {% endfor %}
+          </div>
+
+        </div>
+        <!--/.First slide-->    
+        
+        <!--second slide-->
+        <div class="carousel-item ">
+
+          <div class="row">
+          {% for splMoment  in splMoments|slice(5,10) %}
+             <div  class="col-lg-2 "  >    
+                        <div class="card"  style="background-image: url('{{vich_uploader_asset( splMoment , 'imageFile')}}');background-position:center center;background-size:100% 100% ;" >
+                            <div class='info ' >
+                              <h1 class='title'>{{splMoment .titre}}</h1>
+                              <p class='description'>{{splMoment .description}}</p> 
+                            </div>
+                        </div> 
                         </div>
-                    </div>
-                   </section>
+            {% endfor %}
+          </div>
+
+        </div>
+        <!--/.second slide-->  
+         <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li  data-target="#multi-item-example2"  data-slide-to="0" class="active"></li>
+        <li data-target="#multi-item-example2" data-slide-to="1"></li>
+        <li data-target="#multi-item-example2" data-slide-to="2"></li>
+      </ol>
+      <!--/.Indicators-->         
+   </div>
+      <!--/.Slides-->
+
+    </div>
+     </div>
+   </section> 
+                   
              <!-- ***** splcialities moment Area Ends ***** -->  
 
-             <!-- ***** splcialities moment mobile version  Area starts ***** --> 
-      <section class=" mt-3 ml-4   d-lg-none" class="section" id="menu" >
-                    <div class="section-heading">
-                        <h6>Notre carte</h6>
-                        <h2>Notre specialities du moment</h2>
-                    </div>
-             <div id="galleryFade" class="carousel slide carousel-fade " data-ride="carousel"  >
-                <ol class="carousel-indicators">
-                    {% for splMoment in splMoments %}
-                        <li data-target="#gallery" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
-                    {% endfor %}
-                </ol>
-                <div class="carousel-inner row ">
-                    {% for splMoment in splMoments %}
-                  
-            <div   class="carousel-item {% if loop.index0 == 0 %} active {% endif %}   " >    
-          <div class="card  "  style="background-image: url('{{vich_uploader_asset(splMoment, 'imageFile')}}'); " >
-              <div class='info ' >
-                <h1 class='title'>{{splMoment.titre}}</h1>
-                <p class='description'>{{splMoment.description}}</p> 
-              </div>
-          </div> 
-          </div>  
-            {% endfor %}      
-                </div>
-                <a class="carousel-control-prev" href="#galleryFade" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#galleryFade" data-slide="next">
-                    <span class="carousel-control-next-icon mr-4"></span>
-                </a> 
-            </div>
-        </div>                                                  
-  
-    </section>
-         <!-- ***** splcialities moment mobile version  Area ends ***** -->   
+                                  <!-- ***** splcialities moment mobile version  Area starts ***** --> 
+                            <section class=" mt-3 ml-4   d-lg-none" class="section" id="menu" >
+                                          <div class="section-heading">
+                                              <h6>Notre carte</h6>
+                                              <h2>Notre specialities du moment</h2>
+                                          </div>
+                                  <div id="galleryFade" class="carousel slide carousel-fade " data-ride="carousel"  >
+                                      <ol class="carousel-indicators">
+                                          {% for splMoment in splMoments %}
+                                              <li data-target="#gallery" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
+                                          {% endfor %}
+                                      </ol>
+                                      <div class="carousel-inner row ">
+                                          {% for splMoment in splMoments %}
+                                        
+                                  <div   class="carousel-item {% if loop.index0 == 0 %} active {% endif %}   " >    
+                                <div class="card  "  style="background-image: url('{{vich_uploader_asset(splMoment, 'imageFile')}}'); " >
+                                    <div class='info ' >
+                                      <h1 class='title'>{{splMoment.titre}}</h1>
+                                      <p class='description'>{{splMoment.description}}</p> 
+                                    </div>
+                                </div> 
+                                </div>  
+                                  {% endfor %}      
+                                      </div>
+                                      <a class="carousel-control-prev" href="#galleryFade" data-slide="prev">
+                                          <span class="carousel-control-prev-icon"></span>
+                                      </a>
+                                      <a class="carousel-control-next" href="#galleryFade" data-slide="next">
+                                          <span class="carousel-control-next-icon mr-4"></span>
+                                      </a> 
+                                  </div>
+                              </div>                                                  
+                        
+                          </section>
+                              <!-- ***** splcialities moment mobile version  Area ends ***** -->   
 
 
             <!-- ***** splecialities maison Area starts ***** -->  
@@ -180,60 +214,101 @@
                 </div>
             </div>
         </div>
-               <div class="col-12 container">
-               <div class="row">
-                {% for splMaison in splMaisons|slice(0,6) %}
-                      <div  class="col-lg-2 "  >    
-                        <div class="card"  style="background-image: url('{{vich_uploader_asset( splMaison, 'imageFile')}}');background-position:center center;background-size:230px 400px;" >
+                                <div class="col-12 container">
+               <div id="multi-item-example1" class="carousel slide carousel-multi-item" data-ride="carousel"  data-pause="hover" >
+     
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox" >
+
+        <!--First slide-->
+        <div class="carousel-item active">
+
+          <div class="row">
+          {% for splMaison in splMaisons|slice(0,6) %}
+             <div  class="col-lg-2 "  >    
+                        <div class="card"  style="background-image: url('{{vich_uploader_asset( splMaison , 'imageFile')}}');background-position:center center;background-size:100% 100% ;" >
                             <div class='info ' >
-                              <h1 class='title'>{{splMaison.titre}}</h1>
-                              <p class='description'>{{splMaison.description}}</p> 
+                              <h1 class='title'>{{splMaison .titre}}</h1>
+                              <p class='description'>{{splMaison .description}}</p> 
                             </div>
                         </div> 
                         </div>
-                         {% endfor %}
-                        
-                    </div>
+            {% endfor %}
+          </div>
+
+        </div>
+        <!--/.First slide-->    
+        
+        <!--second slide-->
+        <div class="carousel-item ">
+
+          <div class="row">
+          {% for splMaison  in splMaisons|slice(6,10) %}
+             <div  class="col-lg-2 "  >    
+                        <div class="card"  style="background-image: url('{{vich_uploader_asset( splMaison , 'imageFile')}}');background-position:center center;background-size:100% 100% ;" >
+                            <div class='info ' >
+                              <h1 class='title'>{{splMaison .titre}}</h1>
+                              <p class='description'>{{splMaison .description}}</p> 
+                            </div>
+                        </div> 
+                        </div>
+            {% endfor %}
+          </div>
+
+        </div>
+        <!--/.second slide-->  
+         <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li  data-target="#multi-item-example1" data-slide-to="0" class="active"></li>
+        <li data-target="#multi-item-example1" data-slide-to="1"></li>
+        <li data-target="#multi-item-example1" data-slide-to="2"></li>
+      </ol>
+      <!--/.Indicators-->         
+   </div>
+      <!--/.Slides-->
+
+    </div>
                     </div>
                    </section>
              <!-- ***** splcialities maison Area Ends ***** -->  
 
-             <!-- ***** splcialities maison mobile version  Area starts ***** --> 
-      <section class=" mt-3 ml-4  d-lg-none" class="section " id="menu">
-                    <div class="section-heading">
-                        <h6>Notre carte</h6>
-                        <h2>Notre specialities du maison</h2>
-                    </div>
-             <div id="galleryFade2" class="carousel slide  carousel-fade " data-ride="carousel"   >
-                <ol class="carousel-indicators">
-                    {% for splMaison in splMaisons %}
-                        <li data-target="#gallery2" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
-                    {% endfor %}
-                </ol>
-                <div class="carousel-inner row">
-                    {% for splMaison in splMaisons %}
-                  
-            <div   class="carousel-item {% if loop.index0 == 0 %} active {% endif %} " >    
-          <div class="card  "  style="background-image: url('{{vich_uploader_asset(splMaison, 'imageFile')}}');" >
-              <div class='info ' >
-                <h1 class='title'>{{splMaison.titre}}</h1>
-                <p class='description'>{{splMaison.description}}</p> 
-              </div>
-          </div> 
-          </div>  
-            {% endfor %}      
-                </div>
-                <a class="carousel-control-prev" href="#galleryFade2" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next " href="#galleryFade2" data-slide="next">
-                    <span class="carousel-control-next-icon mr-4"></span>
-                </a> 
-            </div>
-        </div>                                                  
-  
-    </section>
-         <!-- ***** splcialities maison mobile version  Area ends ***** -->  
+                                <!-- ***** splcialities maison mobile version  Area starts ***** --> 
+                          <section class=" mt-3 ml-4  d-lg-none" class="section " id="menu">
+                                        <div class="section-heading">
+                                            <h6>Notre carte</h6>
+                                            <h2>Notre specialities du maison</h2>
+                                        </div>
+                                <div id="galleryFade2" class="carousel slide  carousel-fade " data-ride="carousel"   >
+                                    <ol class="carousel-indicators">
+                                        {% for splMaison in splMaisons %}
+                                            <li data-target="#gallery2" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
+                                        {% endfor %}
+                                    </ol>
+                                    <div class="carousel-inner row">
+                                        {% for splMaison in splMaisons %}
+                                      
+                                <div   class="carousel-item {% if loop.index0 == 0 %} active {% endif %} " >    
+                              <div class="card  "  style="background-image: url('{{vich_uploader_asset(splMaison, 'imageFile')}}');" >
+                                  <div class='info '  >
+                                    <h1 class='title'>{{splMaison.titre}}</h1>
+                                    <p class='description'>{{splMaison.description}}</p> 
+                                  </div>
+                              </div> 
+                              </div>  
+                                {% endfor %}      
+                                    </div>
+                                    <a class="carousel-control-prev" href="#galleryFade2" data-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </a>
+                                    <a class="carousel-control-next " href="#galleryFade2" data-slide="next">
+                                        <span class="carousel-control-next-icon mr-4"></span>
+                                    </a> 
+                                </div>
+                            </div>                                                  
+                      
+                        </section>
+                            <!-- ***** splcialities maison mobile version  Area ends ***** -->  
       
      <!-- ***** splecialities snacking Area starts ***** -->  
              <section class="section p-5 d-none d-lg-block"  id="menu">
@@ -247,72 +322,117 @@
                       </div>
                   </div>
               </div>
-                   <div class="col-12 container">
-               <div class="row">
-                {% for snacking in snackings|slice(0,6) %}
-                      <div  class="col-lg-2 "  >    
-                        <div class="card"  style="background-image: url('{{vich_uploader_asset( snacking, 'imageFile')}}');background-position:center center;background-size:230px 400px;" >
+                           <div class="col-12 container">
+               <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel"  data-pause="hover" >
+     
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox" >
+
+        <!--First slide-->
+        <div class="carousel-item active">
+
+          <div class="row">
+          {% for snacking in snackings|slice(0,6) %}
+             <div  class="col-lg-2 "  >    
+                        <div class="card"  style="background-image: url('{{vich_uploader_asset( snacking, 'imageFile')}}');background-position:center center;background-size:100% 100% ;" >
                             <div class='info ' >
                               <h1 class='title'>{{snacking.titre}}</h1>
                               <p class='description'>{{snacking.description}}</p> 
                             </div>
                         </div> 
                         </div>
-                         {% endfor %}
-                        
-                    </div>
+            {% endfor %}
+          </div>
+
+        </div>
+        <!--/.First slide-->    
+        
+        <!--second slide-->
+        <div class="carousel-item ">
+
+          <div class="row">
+          {% for snacking in snackings|slice(5,10) %}
+             <div  class="col-lg-2 "  >    
+                        <div class="card"  style="background-image: url('{{vich_uploader_asset( snacking, 'imageFile')}}');background-position:center center;background-size:100% 100% ;" >
+                            <div class='info ' >
+                              <h1 class='title'>{{snacking.titre}}</h1>
+                              <p class='description'>{{snacking.description}}</p> 
+                            </div>
+                        </div> 
+                        </div>
+            {% endfor %}
+          </div>
+
+        </div>
+        <!--/.second slide-->  
+         <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li  data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+        <li data-target="#multi-item-example" data-slide-to="1"></li>
+        <li data-target="#multi-item-example" data-slide-to="2"></li>
+      </ol>
+      <!--/.Indicators-->         
+   </div>
+      <!--/.Slides-->
+
+    </div>
                     </div>
                    </section>
           
              <!-- ***** snacking Area Ends ***** --> 
 
-            <!-- ***** snacking mobile version  Area starts ***** --> 
-            <section class=" mt-3 ml-4  d-lg-none" class="section m-0" id="menu">
-                  <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="section-heading">
-                                    <h6>Notre carte</h6>
-                                    <h2>Notre specialities snacking</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <div  >
-                <div id="galleryFade3" class="carousel slide   carousel-fade" data-ride="carousel"  >
-                    <ol class="carousel-indicators">
-                        {% for snacking in snackings %}
-                            <li data-target="#gallery3" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
-                        {% endfor %}
-                    </ol>
-                    <div class="carousel-inner row">
-                        {% for snacking in snackings %}
-                                  
-                  <div   class="carousel-item {% if loop.index0 == 0 %} active {% endif %} " >    
-                <div class="card"  style="background-image: url('{{vich_uploader_asset(snacking, 'imageFile')}}'); " >
-                    <div class='info ' >
-                      <h1 class='title'>{{snacking.titre}}</h1>
-                      <p class='description'>{{snacking.description}}</p> 
-                    </div>
-                </div> 
-                </div>  
-                {% endfor %} 
-                                    
-                                        
-                </div>
-                <a class="carousel-control-prev" href="#galleryFade3" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#galleryFade3" data-slide="next">
-                    <span class="carousel-control-next-icon mr-4"></span>
-                </a> 
-            </div>
-                  </div>                                                  
-              </div> 
-              </section>
-         <!-- ***** snacking mobile version  Area ends ***** -->
-                                        
-      
+                                  <!-- ***** snacking mobile version  Area starts ***** --> 
+                                  <section class=" mt-3 ml-4  d-lg-none" class="section m-0" id="menu">
+                                        <div class="container">
+                                              <div class="row">
+                                                  <div class="col-lg-4">
+                                                      <div class="section-heading">
+                                                          <h6>Notre carte</h6>
+                                                          <h2>Notre specialities snacking</h2>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                              <div  >
+                                      <div id="galleryFade3" class="carousel slide   carousel-fade" data-ride="carousel"  >
+                                          <ol class="carousel-indicators">
+                                              {% for snacking in snackings %}
+                                                  <li data-target="#gallery3" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
+                                              {% endfor %}
+                                          </ol>
+                                          <div class="carousel-inner row">
+                                              {% for snacking in snackings %}
+                                                        
+                                        <div   class="carousel-item {% if loop.index0 == 0 %} active {% endif %} " >    
+                                      <div class="card"  style="background-image: url('{{vich_uploader_asset(snacking, 'imageFile')}}'); " >
+                                          <div class='info ' >
+                                            <h1 class='title'>{{snacking.titre}}</h1>
+                                            <p class='description'>{{snacking.description}}</p> 
+                                          </div>
+                                      </div> 
+                                      </div>  
+                                      {% endfor %} 
+                                                          
+                                                              
+                                      </div>
+                                      <a class="carousel-control-prev" href="#galleryFade3" data-slide="prev">
+                                          <span class="carousel-control-prev-icon"></span>
+                                      </a>
+                                      <a class="carousel-control-next" href="#galleryFade3" data-slide="next">
+                                          <span class="carousel-control-next-icon mr-4"></span>
+                                      </a> 
+                                  </div>
+                                        </div>                                                  
+                                    </div> 
+                                    </section>
+                              <!-- ***** snacking mobile version  Area ends ***** -->
+
+         
+
+
+
+
 </main>
 {% endblock %}
 
